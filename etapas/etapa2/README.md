@@ -75,15 +75,11 @@ Seções obrigatórias:
 - Por quê essa estratégia?
 - Qual o impacto no dataset?
 
-**Código esperado:**
-```python
-# Exemplo: Imputação
-from sklearn.impute import SimpleImputer
-
-# Justifique sua escolha!
-imputer = SimpleImputer(strategy='median')
-df[numeric_cols] = imputer.fit_transform(df[numeric_cols])
-```
+**Pesquise:**
+- Documentação do `sklearn.impute`
+- Diferentes estratégias de imputação
+- Quando usar cada uma
+- Como justificar sua escolha tecnicamente
 
 ### 2. Tratamento de Outliers
 
@@ -99,16 +95,11 @@ df[numeric_cols] = imputer.fit_transform(df[numeric_cols])
 - Label Encoding ou Ordinal Encoding para ordinais
 - Explique qual variável recebeu qual tratamento
 
-**Código esperado:**
-```python
-from sklearn.preprocessing import OneHotEncoder, LabelEncoder
-
-# One-Hot para nominais
-encoder = OneHotEncoder(drop='first', sparse_output=False)
-
-# Label para ordinais (se houver)
-label_encoder = LabelEncoder()
-```
+**Pesquise:**
+- Diferença entre variáveis nominais e ordinais
+- One-Hot Encoding vs Label Encoding
+- Documentação do `sklearn.preprocessing`
+- Quando usar cada tipo de encoding
 
 ### 4. Normalização/Padronização
 
@@ -139,17 +130,13 @@ Exemplos:
 ### 7. Divisão dos Dados
 
 **Obrigatório:**
-```python
-from sklearn.model_selection import train_test_split
+- Dividir em 70% treino, 15% validação, 15% teste
+- Usar `random_state` fixo para reprodutibilidade
 
-# 70% treino, 15% validação, 15% teste
-X_temp, X_test, y_temp, y_test = train_test_split(
-    X, y, test_size=0.15, random_state=42
-)
-X_train, X_val, y_train, y_val = train_test_split(
-    X_temp, y_temp, test_size=0.1765, random_state=42  # 0.1765 * 0.85 ≈ 0.15
-)
-```
+**Pesquise:**
+- Documentação do `sklearn.model_selection.train_test_split`
+- Como fazer divisão em 3 conjuntos (treino/validação/teste)
+- Importância do `random_state`
 
 ---
 

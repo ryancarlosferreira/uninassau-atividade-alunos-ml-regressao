@@ -62,12 +62,12 @@ Seções obrigatórias:
 
 ### Modelo Baseline
 **Regressão Linear Simples**
-```python
-from sklearn.linear_model import LinearRegression
 
-baseline = LinearRegression()
-baseline.fit(X_train, y_train)
-```
+Pesquise como implementar regressão linear usando scikit-learn. Este será seu modelo de referência para comparar os demais.
+
+**Recursos:**
+- Documentação: `sklearn.linear_model.LinearRegression`
+- Tutorial de regressão linear
 
 ### Modelos Avançados (escolha pelo menos 5)
 
@@ -78,20 +78,11 @@ baseline.fit(X_train, y_train)
 4. **Gradient Boosting** (XGBoost, LightGBM, ou CatBoost)
 5. **Support Vector Regressor** ou **KNN Regressor** ou **Elastic Net**
 
-**Exemplo de código:**
-```python
-from sklearn.ensemble import RandomForestRegressor
-from xgboost import XGBRegressor
-from sklearn.tree import DecisionTreeRegressor
-
-models = {
-    'Linear Regression': LinearRegression(),
-    'Random Forest': RandomForestRegressor(random_state=42),
-    'XGBoost': XGBRegressor(random_state=42),
-    'Decision Tree': DecisionTreeRegressor(random_state=42),
-    # ... adicione mais 2
-}
-```
+**Pesquise:**
+- Como instalar e importar cada biblioteca
+- Diferenças entre cada modelo
+- Hiperparâmetros padrão de cada um
+- Como criar um dicionário de modelos para treinar em loop
 
 ---
 
@@ -105,20 +96,11 @@ Para **regressão**, calcule:
 4. **R²** (R-squared)
 5. **MAPE** (Mean Absolute Percentage Error) - opcional
 
-**Código esperado:**
-```python
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-import numpy as np
-
-mae = mean_absolute_error(y_true, y_pred)
-mse = mean_squared_error(y_true, y_pred)
-rmse = np.sqrt(mse)
-r2 = r2_score(y_true, y_pred)
-
-print(f"MAE: {mae:.2f}")
-print(f"RMSE: {rmse:.2f}")
-print(f"R²: {r2:.4f}")
-```
+**Pesquise:**
+- Documentação do `sklearn.metrics`
+- Como calcular cada métrica
+- Como interpretar cada uma
+- Qual métrica é mais importante para regressão
 
 ---
 
@@ -126,111 +108,61 @@ print(f"R²: {r2:.4f}")
 
 ### 1. Treinamento de Todos os Modelos
 
-Loop pelos modelos:
-```python
-results = {}
+**Objetivo:** Treinar todos os modelos e armazenar resultados.
 
-for name, model in models.items():
-    # Treinar
-    model.fit(X_train, y_train)
-
-    # Predizer no conjunto de validação
-    y_pred = model.predict(X_val)
-
-    # Calcular métricas
-    mae = mean_absolute_error(y_val, y_pred)
-    rmse = np.sqrt(mean_squared_error(y_val, y_pred))
-    r2 = r2_score(y_val, y_pred)
-
-    results[name] = {'MAE': mae, 'RMSE': rmse, 'R²': r2}
-```
+**Pesquise:**
+- Como fazer loop em um dicionário de modelos
+- Como treinar modelos (.fit)
+- Como fazer predições (.predict)
+- Como armazenar resultados em dicionário ou DataFrame
 
 ### 2. Validação Cruzada
 
-**Obrigatório:**
-```python
-from sklearn.model_selection import cross_val_score
+**Obrigatório:** Usar validação cruzada com 5 folds.
 
-for name, model in models.items():
-    scores = cross_val_score(
-        model, X_train, y_train,
-        cv=5,  # 5-fold cross-validation
-        scoring='neg_mean_absolute_error'
-    )
-    print(f"{name} - CV MAE: {-scores.mean():.2f} (+/- {scores.std():.2f})")
-```
+**Pesquise:**
+- Documentação do `sklearn.model_selection.cross_val_score`
+- O que é k-fold cross-validation
+- Como escolher o scoring apropriado
+- Como interpretar média e desvio padrão dos scores
 
 ### 3. Comparação Visual
 
 **Crie gráficos:**
 
 #### Gráfico de Barras - Comparação de MAE
-```python
-import matplotlib.pyplot as plt
+Pesquise como criar gráfico de barras horizontal comparando MAE de todos os modelos.
 
-models_names = list(results.keys())
-mae_values = [results[m]['MAE'] for m in models_names]
-
-plt.figure(figsize=(10, 6))
-plt.barh(models_names, mae_values)
-plt.xlabel('MAE (menor é melhor)')
-plt.title('Comparação de Modelos - MAE')
-plt.show()
-```
+**Recursos:**
+- `matplotlib.pyplot.barh`
+- Como ordenar modelos por performance
 
 #### Scatter Plot - Predito vs Real
-```python
-# Para o melhor modelo
-plt.figure(figsize=(8, 8))
-plt.scatter(y_val, y_pred, alpha=0.5)
-plt.plot([y_val.min(), y_val.max()], [y_val.min(), y_val.max()], 'r--', lw=2)
-plt.xlabel('Valores Reais')
-plt.ylabel('Valores Preditos')
-plt.title('Predito vs Real - [Nome do Modelo]')
-plt.show()
-```
+Pesquise como criar scatter plot mostrando valores preditos vs valores reais, com linha diagonal de referência (predição perfeita).
+
+**Recursos:**
+- `matplotlib.pyplot.scatter`
+- Como adicionar linha de referência diagonal
 
 ### 4. Análise de Erros
 
-**Obrigatório:**
-```python
-# Resíduos
-residuals = y_val - y_pred
+**Obrigatório:** Calcular resíduos e criar gráficos de diagnóstico.
 
-# Histograma dos resíduos
-plt.figure(figsize=(10, 5))
-plt.subplot(1, 2, 1)
-plt.hist(residuals, bins=30, edgecolor='black')
-plt.xlabel('Resíduo (Real - Predito)')
-plt.title('Distribuição dos Resíduos')
-
-# Q-Q Plot
-plt.subplot(1, 2, 2)
-from scipy import stats
-stats.probplot(residuals, plot=plt)
-plt.title('Q-Q Plot dos Resíduos')
-plt.tight_layout()
-plt.show()
-```
+**Pesquise:**
+- O que são resíduos (erro = real - predito)
+- Como criar histograma de resíduos
+- O que é Q-Q Plot e como interpretar
+- Documentação do `scipy.stats.probplot`
 
 ### 5. Feature Importance (para modelos tree-based)
 
-**Se usar Random Forest ou XGBoost:**
-```python
-# Feature importance
-importances = model.feature_importances_
-feature_names = X_train.columns
+**Se usar Random Forest ou XGBoost:** Extraia e visualize a importância das features.
 
-# Ordenar
-indices = np.argsort(importances)[::-1][:10]  # Top 10
-
-plt.figure(figsize=(10, 6))
-plt.barh(range(10), importances[indices])
-plt.yticks(range(10), [feature_names[i] for i in indices])
-plt.xlabel('Importância')
-plt.title('Top 10 Features Mais Importantes')
-plt.show()
-```
+**Pesquise:**
+- Atributo `.feature_importances_` de modelos tree-based
+- Como ordenar features por importância
+- Como criar gráfico de barras mostrando top 10 features
+- Interpretação da importância de features
 
 ---
 

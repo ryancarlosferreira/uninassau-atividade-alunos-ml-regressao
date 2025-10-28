@@ -73,236 +73,107 @@ Seções obrigatórias:
 **Escolha uma técnica:**
 
 #### Opção A: Grid Search (Busca Exaustiva)
-```python
-from sklearn.model_selection import GridSearchCV
+Testa TODAS as combinações de hiperparâmetros definidas.
 
-# Definir grid de hiperparâmetros
-param_grid = {
-    'n_estimators': [100, 200, 300],
-    'max_depth': [10, 20, 30, None],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4]
-}
+**Pesquise:**
+- Documentação do `sklearn.model_selection.GridSearchCV`
+- Como definir um grid de hiperparâmetros
+- Quais hiperparâmetros são importantes para seu modelo
+- Como usar cross-validation durante o tuning
+- Como extrair os melhores parâmetros
 
-# Grid Search
-grid_search = GridSearchCV(
-    estimator=RandomForestRegressor(random_state=42),
-    param_grid=param_grid,
-    cv=5,  # 5-fold cross-validation
-    scoring='neg_mean_absolute_error',
-    n_jobs=-1,  # usar todos os processadores
-    verbose=2
-)
-
-grid_search.fit(X_train, y_train)
-
-print("Melhores hiperparâmetros:", grid_search.best_params_)
-print("Melhor score:", -grid_search.best_score_)
-```
+**Vantagens:** Garante encontrar a melhor combinação no grid
+**Desvantagens:** Pode ser muito lento
 
 #### Opção B: Random Search (Mais Rápido)
-```python
-from sklearn.model_selection import RandomizedSearchCV
-import numpy as np
+Testa N combinações ALEATÓRIAS de hiperparâmetros.
 
-# Distribuições de hiperparâmetros
-param_distributions = {
-    'n_estimators': [100, 200, 300, 400, 500],
-    'max_depth': [10, 20, 30, 40, 50, None],
-    'min_samples_split': [2, 5, 10, 15],
-    'min_samples_leaf': [1, 2, 4, 6],
-    'max_features': ['auto', 'sqrt', 'log2']
-}
+**Pesquise:**
+- Documentação do `sklearn.model_selection.RandomizedSearchCV`
+- Diferença entre Grid Search e Random Search
+- Como definir distribuições de hiperparâmetros
+- Quantas iterações (n_iter) usar
+- Quando usar Random Search vs Grid Search
 
-random_search = RandomizedSearchCV(
-    estimator=RandomForestRegressor(random_state=42),
-    param_distributions=param_distributions,
-    n_iter=50,  # 50 combinações aleatórias
-    cv=5,
-    scoring='neg_mean_absolute_error',
-    n_jobs=-1,
-    verbose=2,
-    random_state=42
-)
-
-random_search.fit(X_train, y_train)
-
-print("Melhores hiperparâmetros:", random_search.best_params_)
-```
+**Vantagens:** Muito mais rápido que Grid Search
+**Desvantagens:** Pode não encontrar a combinação ótima
 
 ### 2. Análise dos Resultados do Tuning
 
-**Visualizar o processo:**
-```python
-# Converter resultados em DataFrame
-results_df = pd.DataFrame(grid_search.cv_results_)
+**Objetivo:** Analisar os resultados do Grid/Random Search.
 
-# Top 10 melhores combinações
-top_10 = results_df.nsmallest(10, 'rank_test_score')[
-    ['params', 'mean_test_score', 'std_test_score']
-]
-print(top_10)
-
-# Gráfico de comparação
-plt.figure(figsize=(12, 6))
-plt.errorbar(
-    range(len(top_10)),
-    -top_10['mean_test_score'],
-    yerr=top_10['std_test_score'],
-    fmt='o-'
-)
-plt.xlabel('Configuração')
-plt.ylabel('MAE')
-plt.title('Top 10 Configurações de Hiperparâmetros')
-plt.xticks(rotation=45)
-plt.tight_layout()
-plt.show()
-```
+**Pesquise:**
+- Atributo `.cv_results_` do GridSearchCV/RandomizedSearchCV
+- Como converter resultados em DataFrame
+- Como encontrar top N melhores combinações
+- Como visualizar comparação entre configurações
+- Como criar gráfico de erro com barras de desvio padrão
 
 ### 3. Treinamento do Modelo Final
 
-**Treinar com melhores hiperparâmetros:**
-```python
-# Obter melhor modelo
-best_model = grid_search.best_estimator_
+**Objetivo:** Treinar modelo final com melhores hiperparâmetros usando TREINO + VALIDAÇÃO.
 
-# OU treinar manualmente com os melhores parâmetros
-final_model = RandomForestRegressor(
-    n_estimators=200,
-    max_depth=20,
-    min_samples_split=5,
-    # ... outros parâmetros
-    random_state=42
-)
-
-# Treinar no conjunto de TREINO + VALIDAÇÃO
-X_train_full = pd.concat([X_train, X_val])
-y_train_full = pd.concat([y_train, y_val])
-
-final_model.fit(X_train_full, y_train_full)
-```
+**Pesquise:**
+- Atributo `.best_estimator_` do GridSearchCV
+- Atributo `.best_params_` para ver os parâmetros escolhidos
+- Como combinar conjuntos de treino e validação (pd.concat)
+- Por que treinar no conjunto completo após tuning
 
 ### 4. Avaliação Final no Conjunto de Teste
 
 **⚠️ IMPORTANTE:** Só use o conjunto de teste UMA VEZ!
 
-```python
-# Predições no conjunto de teste
-y_test_pred = final_model.predict(X_test)
+**Objetivo:** Avaliar desempenho final do modelo otimizado.
 
-# Calcular métricas finais
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
-import numpy as np
-
-mae_test = mean_absolute_error(y_test, y_test_pred)
-rmse_test = np.sqrt(mean_squared_error(y_test, y_test_pred))
-r2_test = r2_score(y_test, y_test_pred)
-
-print("="*50)
-print("DESEMPENHO FINAL NO CONJUNTO DE TESTE")
-print("="*50)
-print(f"MAE:  {mae_test:.2f}")
-print(f"RMSE: {rmse_test:.2f}")
-print(f"R²:   {r2_test:.4f}")
-print("="*50)
-```
+**Pesquise:**
+- Como fazer predições no conjunto de teste
+- Como calcular MAE, RMSE e R² (já viu na Etapa 3)
+- Por que só podemos usar o teste uma vez
+- Como formatar saída para apresentação clara
 
 ### 5. Comparação: Antes vs Depois da Otimização
 
-**Crie tabela comparativa:**
-```python
-comparison = pd.DataFrame({
-    'Métrica': ['MAE', 'RMSE', 'R²'],
-    'Antes (Etapa 3)': [mae_antes, rmse_antes, r2_antes],
-    'Depois (Etapa 4)': [mae_test, rmse_test, r2_test],
-    'Melhoria (%)': [
-        ((mae_antes - mae_test) / mae_antes) * 100,
-        ((rmse_antes - rmse_test) / rmse_antes) * 100,
-        ((r2_test - r2_antes) / r2_antes) * 100
-    ]
-})
+**Objetivo:** Mostrar o impacto da otimização.
 
-print(comparison)
-```
+**Pesquise:**
+- Como criar DataFrame comparativo com pandas
+- Como calcular melhoria percentual
+- Como formatar tabela para apresentação
+- Como interpretar se houve melhoria significativa
 
 ### 6. Análise de Erros Detalhada
 
 **Gráficos obrigatórios:**
 
 #### Scatter: Predito vs Real
-```python
-plt.figure(figsize=(10, 6))
-plt.scatter(y_test, y_test_pred, alpha=0.5)
-plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()],
-         'r--', lw=2, label='Predição Perfeita')
-plt.xlabel('Valores Reais')
-plt.ylabel('Valores Preditos')
-plt.title('Predições vs Valores Reais - Conjunto de Teste')
-plt.legend()
-plt.show()
-```
+**Pesquise:**
+- Como criar scatter plot com linha diagonal de referência
+- Interpretação: pontos perto da linha = boas predições
 
 #### Distribuição dos Resíduos
-```python
-residuals = y_test - y_test_pred
-
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
-
-# Histograma
-axes[0].hist(residuals, bins=30, edgecolor='black')
-axes[0].axvline(0, color='r', linestyle='--', linewidth=2)
-axes[0].set_xlabel('Resíduo')
-axes[0].set_ylabel('Frequência')
-axes[0].set_title('Distribuição dos Resíduos')
-
-# Resíduos vs Predições
-axes[1].scatter(y_test_pred, residuals, alpha=0.5)
-axes[1].axhline(0, color='r', linestyle='--', linewidth=2)
-axes[1].set_xlabel('Valores Preditos')
-axes[1].set_ylabel('Resíduos')
-axes[1].set_title('Resíduos vs Predições')
-
-plt.tight_layout()
-plt.show()
-```
+**Pesquise:**
+- Como criar subplots (1 linha, 2 colunas)
+- Histograma de resíduos com linha vertical em x=0
+- Scatter de resíduos vs predições com linha horizontal em y=0
+- Como interpretar padrões nos resíduos
 
 #### Análise de Casos Extremos
-```python
-# Identificar piores predições
-errors = np.abs(residuals)
-worst_indices = errors.nlargest(10).index
-
-print("10 PIORES PREDIÇÕES:")
-print(pd.DataFrame({
-    'Real': y_test.iloc[worst_indices],
-    'Predito': y_test_pred[worst_indices],
-    'Erro Absoluto': errors.iloc[worst_indices]
-}))
-```
+**Pesquise:**
+- Como calcular erro absoluto
+- Como encontrar N maiores valores (.nlargest)
+- Como criar tabela mostrando piores predições
+- Como interpretar por que o modelo errou nesses casos
 
 ### 7. Salvamento do Modelo
 
-**Salvar modelo treinado:**
-```python
-import joblib
+**Objetivo:** Salvar modelo final para uso futuro.
 
-# Criar pasta models (se não existir)
-import os
-os.makedirs('models', exist_ok=True)
-
-# Salvar modelo
-joblib.dump(final_model, 'models/modelo_final.joblib')
-
-print("✅ Modelo salvo com sucesso!")
-
-# Testar carregamento
-loaded_model = joblib.load('models/modelo_final.joblib')
-print("✅ Modelo carregado com sucesso!")
-
-# Verificar se funciona
-test_prediction = loaded_model.predict(X_test[:5])
-print("Predições de teste:", test_prediction)
-```
+**Pesquise:**
+- Biblioteca `joblib` para salvar modelos
+- Como criar pasta se não existir (`os.makedirs`)
+- Diferença entre `.joblib` e `.pkl`
+- Como carregar modelo salvo
+- Como testar se o modelo carregado funciona corretamente
 
 ---
 

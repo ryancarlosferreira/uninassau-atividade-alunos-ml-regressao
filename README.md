@@ -9,10 +9,11 @@
 
 ## 🎯 Objetivo do Projeto
 
-Desenvolver um modelo de **Machine Learning** completo para prever o desempenho acadêmico final de estudantes universitários, identificando aqueles em risco de baixo desempenho para permitir intervenções preventivas.
+Desenvolver um modelo de **Machine Learning** completo para resolver um problema de regressão do mundo real, desde análise exploratória até apresentação final.
 
-**Tipo de problema:** Regressão (prever nota final de 0-100)
-**Dataset:** 2.510 estudantes com 14 variáveis
+**Tipo de problema:** Regressão (prever valores contínuos)
+**Datasets disponíveis:** 5 opções (cada grupo escolhe 1)
+**Exemplos:** Prever nota de aluno, vendas, consumo de energia, preço de imóvel, ou tempo de entrega
 
 ---
 
@@ -192,14 +193,14 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Explore o Dataset
+### 3️⃣ Explore os Datasets
 
 ```bash
 # Iniciar Jupyter
 jupyter notebook
 
 # Abra: notebooks/00_EXEMPLO_STARTER.py
-# Ou navegue até: data/raw/students_performance.csv
+# Ou navegue até: data/datasets/ (escolha 1 dos 5 CSVs)
 ```
 
 ### 4️⃣ Leia as Instruções da Etapa Atual
@@ -228,9 +229,13 @@ jupyter notebook
 │       └── TEMPLATE_RELATORIO_FINAL.md
 │
 ├── data/
-│   ├── raw/                    # Dados originais (NÃO MODIFICAR!)
+│   ├── datasets/               # 5 datasets disponíveis (NÃO MODIFICAR!)
 │   │   ├── students_performance.csv
-│   │   └── README.md          # Documentação do dataset
+│   │   ├── ecommerce_sales.csv
+│   │   ├── energy_consumption.csv
+│   │   ├── housing_prices.csv
+│   │   ├── delivery_time.csv
+│   │   └── README.md          # ⭐ Descrição de TODOS os 5 datasets
 │   └── processed/             # Dados limpos (você cria na Etapa 2)
 │
 ├── notebooks/                  # Seus notebooks Jupyter
@@ -299,31 +304,48 @@ git push origin main
 
 ---
 
-## 📊 SOBRE O DATASET
+## 📊 SOBRE OS DATASETS
 
-**Arquivo:** `data/raw/students_performance.csv`
-**Registros:** 2.510 estudantes
-**Features:** 14 variáveis
-**Target:** `final_grade` (0-100 pontos)
+**5 datasets disponíveis** - Cada grupo escolhe 1
 
-### Categorias de Variáveis
+### Opções de Datasets:
 
-- 👤 **Demográficas:** idade, gênero, educação dos pais
-- 📚 **Acadêmicas:** notas anteriores, frequência, horas de estudo
-- 💻 **Infraestrutura:** internet, atividades extracurriculares
-- 🏥 **Bem-estar:** sono, saúde
-- 💰 **Socioeconômicas:** renda familiar
+1. **🎓 Desempenho Acadêmico de Estudantes** (Recomendado para iniciantes)
+   - Prever nota final (0-100)
+   - 2.510 registros, 13 features
+   - Dificuldade: ⭐⭐
 
-### ⚠️ Desafios
+2. **🛒 Vendas de E-commerce**
+   - Prever vendas mensais (R$)
+   - 2.510 registros, 16 features
+   - Dificuldade: ⭐⭐⭐
 
-O dataset contém problemas intencionais (dados do mundo real):
+3. **⚡ Consumo de Energia Residencial**
+   - Prever consumo mensal (kWh)
+   - 2.510 registros, 16 features
+   - Dificuldade: ⭐⭐⭐
+
+4. **🏠 Preços de Imóveis**
+   - Prever preço de venda (R$)
+   - 2.510 registros, 17 features
+   - Dificuldade: ⭐⭐⭐⭐
+
+5. **🚚 Tempo de Entrega de Pedidos**
+   - Prever tempo de entrega (horas)
+   - 2.510 registros, 16 features
+   - Dificuldade: ⭐⭐⭐
+
+### ⚠️ Desafios Comuns
+
+TODOS os datasets contêm problemas intencionais (dados do mundo real):
 - Valores faltantes (~8%)
-- Outliers
-- Inconsistências
+- Outliers e valores impossíveis
+- Inconsistências e erros de formatação
+- Duplicatas
 
 **Você precisará identificar e tratar!**
 
-📖 **Documentação completa:** `data/raw/README.md`
+📖 **Documentação completa de todos os datasets:** `data/datasets/README.md`
 
 ---
 
@@ -383,7 +405,7 @@ O dataset contém problemas intencionais (dados do mundo real):
 
 | Arquivo | Utilidade |
 |---------|-----------|
-| `data/raw/README.md` | Descrição completa do dataset |
+| `data/datasets/README.md` | Descrição completa dos 5 datasets |
 | `notebooks/00_EXEMPLO_STARTER.py` | Código exemplo de EDA |
 | `docs/BOAS_PRATICAS.md` | Guia de código limpo |
 | `etapas/etapaX/README.md` | Instruções detalhadas de cada etapa |
@@ -409,7 +431,7 @@ O dataset contém problemas intencionais (dados do mundo real):
 ### Dúvidas Técnicas
 
 1. Leia as **instruções da etapa** (`etapas/etapaX/README.md`)
-2. Consulte a **documentação do dataset** (`data/raw/README.md`)
+2. Consulte a **documentação dos datasets** (`data/datasets/README.md`)
 3. Veja o **código de exemplo** (`notebooks/00_EXEMPLO_STARTER.py`)
 4. Consulte **boas práticas** (`docs/BOAS_PRATICAS.md`)
 5. Procure o professor no horário de atendimento
@@ -478,7 +500,7 @@ Antes de cada entrega:
 1. ✅ Formar grupo (até 5 pessoas)
 2. ✅ Todos clonarem o repositório
 3. ✅ Configurar ambiente Python
-4. ✅ Ler `data/raw/README.md`
+4. ✅ Ler `data/datasets/README.md` e escolher 1 dataset
 5. ✅ Ler `etapas/etapa1/README.md`
 
 **DEPOIS:**

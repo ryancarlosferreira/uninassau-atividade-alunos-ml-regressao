@@ -281,45 +281,40 @@ Todos os datasets contêm os seguintes problemas **intencionais**:
 ## 🚀 Como Começar
 
 ### 1. Escolha seu Dataset
-Discuta com o grupo e escolha 1 dos 5 datasets.
+Discuta com o grupo e escolha 1 dos 5 datasets disponíveis acima.
 
-### 2. Carregue os Dados
-```python
-import pandas as pd
+### 2. Leia as Instruções da Etapa 1
+**Arquivo:** `etapas/etapa1/README.md`
 
-# Exemplo: Dataset de Estudantes
-df = pd.read_csv('datasets/students_performance.csv')
+Este arquivo contém:
+- ✅ Todas as questões que você deve responder
+- ✅ Análises obrigatórias
+- ✅ Critérios de avaliação
+- ✅ Dicas e orientações
 
-# Ou E-commerce
-df = pd.read_csv('datasets/ecommerce_sales.csv')
+### 3. Consulte a Documentação do Pandas
+Você precisará aprender a usar pandas para trabalhar com os dados.
 
-# Ou Energia
-df = pd.read_csv('datasets/energy_consumption.csv')
+**Recursos oficiais:**
+- [Pandas Documentation](https://pandas.pydata.org/docs/)
+- [10 Minutes to Pandas](https://pandas.pydata.org/docs/user_guide/10min.html)
+- [Pandas Cheat Sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
 
-# Ou Imóveis
-df = pd.read_csv('datasets/housing_prices.csv')
+**O que você vai precisar aprender:**
+- Como carregar arquivos CSV
+- Como visualizar dados (primeiras linhas, informações gerais)
+- Como calcular estatísticas descritivas
+- Como detectar valores faltantes
 
-# Ou Entrega
-df = pd.read_csv('datasets/delivery_time.csv')
-```
+### 4. Explore e Aprenda
+**Não há atalhos!** Você deve:
+- 📖 Ler a documentação
+- 🔍 Pesquisar como fazer cada tarefa
+- 💡 Experimentar no Jupyter Notebook
+- 🤝 Discutir com o grupo
+- 🆘 Pedir ajuda ao professor quando travar
 
-### 3. Explore Inicialmente
-```python
-# Visualizar primeiras linhas
-print(df.head())
-
-# Informações sobre o dataset
-print(df.info())
-
-# Estatísticas descritivas
-print(df.describe())
-
-# Verificar valores faltantes
-print(df.isnull().sum())
-```
-
-### 4. Siga as Instruções
-Consulte `etapas/etapa1/INSTRUCOES.md` para começar a Análise Exploratória.
+**Lembre-se:** O objetivo é APRENDER, não apenas copiar código pronto!
 
 ---
 

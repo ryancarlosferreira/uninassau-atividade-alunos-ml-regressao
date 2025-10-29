@@ -12,8 +12,8 @@
 Desenvolver um modelo de **Machine Learning** completo para resolver um problema de regressão do mundo real, desde análise exploratória até apresentação final.
 
 **Tipo de problema:** Regressão (prever valores contínuos)
-**Datasets disponíveis:** 5 opções (cada grupo escolhe 1)
-**Exemplos:** Prever nota de aluno, vendas, consumo de energia, preço de imóvel, ou tempo de entrega
+**Datasets disponíveis:** 10 opções (cada grupo escolhe 1)
+**Exemplos:** Prever nota de aluno, vendas, salário TI, visualizações YouTube, preço de carro usado, produtividade de funcionários, etc.
 
 ---
 
@@ -99,7 +99,7 @@ Cada etapa tem:
 
 **Principais tarefas:**
 - Modelo baseline (Regressão Linear)
-- Testar pelo menos 5 modelos diferentes
+- Testar pelo menos 3 modelos diferentes
 - Validação cruzada
 - Comparar métricas (MAE, RMSE, R²)
 - Selecionar melhor modelo
@@ -229,13 +229,13 @@ jupyter notebook
 │       └── TEMPLATE_RELATORIO_FINAL.md
 │
 ├── data/
-│   ├── datasets/               # 5 datasets disponíveis (NÃO MODIFICAR!)
+│   ├── datasets/               # 10 datasets disponíveis (NÃO MODIFICAR!)
 │   │   ├── students_performance.csv
 │   │   ├── ecommerce_sales.csv
 │   │   ├── energy_consumption.csv
 │   │   ├── housing_prices.csv
 │   │   ├── delivery_time.csv
-│   │   └── README.md          # ⭐ Descrição de TODOS os 5 datasets
+│   │   └── README.md          # ⭐ Descrição de TODOS os 10 datasets
 │   └── processed/             # Dados limpos (você cria na Etapa 2)
 │
 ├── notebooks/                  # Seus notebooks Jupyter
@@ -306,7 +306,7 @@ git push origin main
 
 ## 📊 SOBRE OS DATASETS
 
-**5 datasets disponíveis** - Cada grupo escolhe 1
+**10 datasets disponíveis** - Cada grupo escolhe 1
 
 ### Opções de Datasets:
 
@@ -334,6 +334,31 @@ git push origin main
    - Prever tempo de entrega (horas)
    - 2.510 registros, 16 features
    - Dificuldade: ⭐⭐⭐
+
+6. **💼 Salário de Profissionais de TI**
+   - Prever salário anual (R$)
+   - 2.520 registros, 17 features
+   - Dificuldade: ⭐⭐⭐
+
+7. **📺 Visualizações de Vídeos no YouTube**
+   - Prever número de visualizações
+   - 2.520 registros, 21 features
+   - Dificuldade: ⭐⭐⭐
+
+8. **🍽️ Avaliação de Restaurantes**
+   - Prever nota média (1-5 estrelas)
+   - 2.520 registros, 24 features
+   - Dificuldade: ⭐⭐
+
+9. **🚗 Preço de Carros Usados**
+   - Prever preço de revenda (R$)
+   - 2.520 registros, 25 features
+   - Dificuldade: ⭐⭐⭐
+
+10. **📊 Produtividade de Funcionários**
+    - Prever horas produtivas por semana
+    - 2.520 registros, 28 features
+    - Dificuldade: ⭐⭐
 
 ### ⚠️ Desafios Comuns
 
@@ -405,7 +430,7 @@ TODOS os datasets contêm problemas intencionais (dados do mundo real):
 
 | Arquivo | Utilidade |
 |---------|-----------|
-| `data/datasets/README.md` | Descrição completa dos 5 datasets |
+| `data/datasets/README.md` | Descrição completa dos 10 datasets |
 | `notebooks/00_EXEMPLO_STARTER.py` | Código exemplo de EDA |
 | `docs/BOAS_PRATICAS.md` | Guia de código limpo |
 | `etapas/etapaX/README.md` | Instruções detalhadas de cada etapa |

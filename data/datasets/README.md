@@ -2,7 +2,7 @@
 
 ## 📊 Visão Geral
 
-Estão disponíveis **5 datasets diferentes** para o projeto. Cada grupo deve **escolher apenas 1 dataset** para trabalhar ao longo de todas as 5 etapas.
+Estão disponíveis **10 datasets diferentes** para o projeto. Cada grupo deve **escolher apenas 1 dataset** para trabalhar ao longo de todas as 5 etapas.
 
 **IMPORTANTE:** Todos os datasets foram criados com **problemas intencionais** (valores faltantes, outliers, inconsistências, duplicatas, etc.) para simular dados do mundo real.
 
@@ -243,6 +243,286 @@ Otimizar rotas de entrega, prever atrasos, melhorar experiência do cliente, pre
 
 ---
 
+## 📁 Dataset 6: Salário de Profissionais de TI
+
+### 📄 Arquivo
+`salary_prediction.csv`
+
+### 🎯 Objetivo
+Prever **salário anual** (em R$) de profissionais de TI com base em experiência, formação, habilidades técnicas e características do emprego.
+
+### 📊 Características
+- **Registros:** 2.520
+- **Features:** 17
+- **Variável Alvo:** `annual_salary_brl` (salário anual em R$)
+- **Tipo:** Regressão
+
+### 📝 Variáveis
+
+#### Experiência e Formação
+- `professional_id`: ID único
+- `years_experience`: Anos de experiência (0-20)
+- `education_level`: Nível educacional (Técnico, Superior, Pós-graduação, Mestrado, Doutorado)
+- `certifications`: Número de certificações (0-10)
+
+#### Área e Cargo
+- `area`: Área de atuação (Desenvolvimento, Dados, Segurança, DevOps, Gestão, Suporte)
+- `seniority`: Senioridade (Júnior, Pleno, Sênior, Especialista, Gerente)
+- `company_size`: Tamanho da empresa (Pequena, Média, Grande, Multinacional)
+
+#### Habilidades Técnicas
+- `programming_languages`: Linguagens de programação conhecidas (1-10)
+- `frameworks_known`: Frameworks conhecidos (0-15)
+- `github_contributions`: Contribuições no GitHub (0-500)
+
+#### Localização e Regime
+- `location`: Localização (Capital, Interior, Região Metropolitana)
+- `work_mode`: Modo de trabalho (Presencial, Remoto, Híbrido)
+- `hours_per_week`: Horas trabalhadas por semana (30-50)
+
+#### Desenvolvimento Profissional
+- `english_level`: Nível de inglês (Básico, Intermediário, Avançado, Fluente)
+- `conferences_attended`: Conferências participadas (0-10)
+- `projects_completed`: Projetos completados (5-200)
+
+#### Benefícios
+- `has_stock_options`: Stock options (Sim/Não)
+
+### 💡 Aplicação Prática
+Precificação justa de salários, planejamento de carreira, análise de tendências salariais no mercado de TI.
+
+---
+
+## 📁 Dataset 7: Visualizações de Vídeos no YouTube
+
+### 📄 Arquivo
+`youtube_views.csv`
+
+### 🎯 Objetivo
+Prever **número de visualizações** de vídeos no YouTube com base em características do vídeo, canal e estratégias de promoção.
+
+### 📊 Características
+- **Registros:** 2.520
+- **Features:** 21
+- **Variável Alvo:** `total_views` (visualizações totais)
+- **Tipo:** Regressão
+
+### 📝 Variáveis
+
+#### Características do Vídeo
+- `video_id`: ID único
+- `duration_minutes`: Duração em minutos (2-60)
+- `title_length`: Tamanho do título (10-100 caracteres)
+- `description_length`: Tamanho da descrição (50-1000 caracteres)
+- `tags_count`: Número de tags (0-50)
+- `has_thumbnail_custom`: Thumbnail personalizada (Sim/Não)
+- `video_quality`: Qualidade do vídeo (480p, 720p, 1080p, 4K)
+
+#### Categoria e Conteúdo
+- `category`: Categoria (Educação, Gaming, Música, Vlogs, Tecnologia, Culinária, Fitness)
+- `language`: Idioma (Português, Inglês, Espanhol)
+- `has_subtitles`: Legendas (Sim/Não)
+
+#### Características do Canal
+- `channel_subscribers`: Inscritos no canal (100-1.000.000)
+- `channel_age_months`: Idade do canal em meses (1-120)
+- `previous_videos_count`: Vídeos publicados anteriormente (0-500)
+- `avg_upload_frequency_days`: Frequência de upload em dias (1-30)
+
+#### Engajamento e Promoção
+- `comments_count`: Número de comentários (0-10.000)
+- `likes_count`: Número de likes (0-50.000)
+- `shares_count`: Número de compartilhamentos (0-5.000)
+- `playlist_adds`: Adições a playlists (0-1.000)
+- `promoted`: Vídeo promovido (Sim/Não)
+
+#### Timing
+- `upload_time`: Horário de upload (Madrugada, Manhã, Tarde, Noite)
+- `upload_day`: Dia de upload (Seg-Qui, Sexta, Sábado, Domingo)
+
+### 💡 Aplicação Prática
+Otimizar estratégias de conteúdo, prever performance de vídeos, definir melhores horários de publicação.
+
+---
+
+## 📁 Dataset 8: Avaliação de Restaurantes
+
+### 📄 Arquivo
+`restaurant_rating.csv`
+
+### 🎯 Objetivo
+Prever **nota média** (0-5 estrelas) de restaurantes com base em localização, qualidade, serviço e presença online.
+
+### 📊 Características
+- **Registros:** 2.520
+- **Features:** 24
+- **Variável Alvo:** `average_rating` (nota de 1.0 a 5.0)
+- **Tipo:** Regressão
+
+### 📝 Variáveis
+
+#### Localização e Ambiente
+- `restaurant_id`: ID único
+- `location_type`: Tipo de localização (Centro, Bairro Nobre, Subúrbio, Periferia, Shopping)
+- `neighborhood_safety`: Segurança do bairro (Baixa, Média, Alta)
+- `parking_available`: Estacionamento (Sim/Não)
+- `outdoor_seating`: Mesas ao ar livre (Sim/Não)
+
+#### Características do Estabelecimento
+- `cuisine_type`: Tipo de cozinha (Brasileira, Italiana, Japonesa, Americana, Árabe, Vegetariana)
+- `price_range`: Faixa de preço (Econômico, Moderado, Caro, Muito Caro)
+- `seating_capacity`: Capacidade de lugares (20-200)
+- `years_in_business`: Anos em operação (0-30)
+
+#### Serviço e Atendimento
+- `waiters_count`: Número de garçons (2-20)
+- `avg_service_time_min`: Tempo médio de atendimento em minutos (15-90)
+- `accepts_reservations`: Aceita reservas (Sim/Não)
+- `delivery_service`: Serviço de delivery (Sim/Não)
+
+#### Qualidade e Higiene
+- `health_inspection_score`: Pontuação de inspeção sanitária (50-100)
+- `chef_experience_years`: Experiência do chef em anos (1-30)
+- `menu_variety_items`: Variedade do cardápio em itens (10-150)
+- `daily_specials`: Pratos do dia (Sim/Não)
+
+#### Marketing e Presença Online
+- `has_website`: Website próprio (Sim/Não)
+- `social_media_followers`: Seguidores nas redes sociais (0-50.000)
+- `instagram_posts_count`: Posts no Instagram (0-1.000)
+- `online_reviews_count`: Número de avaliações online (5-2.000)
+
+#### Diferenciais
+- `live_music`: Música ao vivo (Sim/Não)
+- `kids_friendly`: Ambiente para crianças (Sim/Não)
+- `accepts_groups`: Aceita grupos (Sim/Não)
+
+### 💡 Aplicação Prática
+Identificar fatores que influenciam satisfação do cliente, melhorar serviços, otimizar marketing.
+
+---
+
+## 📁 Dataset 9: Preço de Carros Usados
+
+### 📄 Arquivo
+`used_cars_price.csv`
+
+### 🎯 Objetivo
+Prever **preço de revenda** (em R$) de carros usados com base em características do veículo, histórico e condição.
+
+### 📊 Características
+- **Registros:** 2.520
+- **Features:** 25
+- **Variável Alvo:** `price_brl` (preço em R$)
+- **Tipo:** Regressão
+
+### 📝 Variáveis
+
+#### Características Básicas
+- `car_id`: ID único
+- `brand`: Marca (Toyota, Honda, Volkswagen, Chevrolet, Ford, Fiat, Hyundai)
+- `model_year`: Ano do modelo (2010-2024)
+- `mileage_km`: Quilometragem (5.000-250.000 km)
+- `fuel_type`: Tipo de combustível (Gasolina, Etanol, Flex, Diesel, Híbrido, Elétrico)
+
+#### Motor e Performance
+- `engine_size_liters`: Tamanho do motor em litros (1.0-3.0)
+- `horsepower`: Potência em cavalos (70-300)
+- `transmission`: Transmissão (Manual, Automática, CVT, Automatizada)
+- `drivetrain`: Tração (Dianteira, Traseira, 4x4)
+
+#### Condição e Histórico
+- `condition`: Condição geral (Excelente, Bom, Regular, Ruim)
+- `previous_owners`: Donos anteriores (1-5)
+- `accident_history`: Histórico de acidentes (Sem acidentes, 1 acidente leve, 2+ acidentes)
+- `service_history`: Histórico de manutenção (Completo, Parcial, Sem histórico)
+
+#### Features e Equipamentos
+- `air_conditioning`: Ar condicionado (Sim/Não)
+- `power_steering`: Direção hidráulica (Sim/Não)
+- `power_windows`: Vidros elétricos (Sim/Não)
+- `airbags_count`: Número de airbags (0-8)
+- `abs_brakes`: Freios ABS (Sim/Não)
+
+#### Acabamento e Extras
+- `interior_material`: Material do interior (Tecido, Couro Sintético, Couro Legítimo)
+- `sound_system`: Sistema de som (Básico, Premium, Multimídia)
+- `sunroof`: Teto solar (Sim/Não)
+- `parking_sensors`: Sensores de estacionamento (Sim/Não)
+
+#### Documentação e Origem
+- `warranty_months`: Garantia em meses (0-36)
+- `imported`: Importado (Sim/Não)
+- `color`: Cor (Prata, Preto, Branco, Vermelho, Azul, Cinza)
+
+### 💡 Aplicação Prática
+Precificação automática de veículos, avaliação de negociações, identificar boas oportunidades de compra.
+
+---
+
+## 📁 Dataset 10: Produtividade de Funcionários
+
+### 📄 Arquivo
+`employee_productivity.csv`
+
+### 🎯 Objetivo
+Prever **horas produtivas por semana** (0-40h) de funcionários com base em condições de trabalho, saúde e satisfação.
+
+### 📊 Características
+- **Registros:** 2.520
+- **Features:** 28
+- **Variável Alvo:** `productive_hours_week` (horas produtivas semanais)
+- **Tipo:** Regressão
+
+### 📝 Variáveis
+
+#### Características Pessoais
+- `employee_id`: ID único
+- `age`: Idade (22-65 anos)
+- `education_level`: Nível educacional (Ensino Médio, Superior Incompleto, Superior, Pós-graduação)
+- `years_at_company`: Anos na empresa (0-20)
+- `previous_experience_years`: Anos de experiência anterior (0-30)
+
+#### Cargo e Departamento
+- `department`: Departamento (TI, Vendas, Marketing, Operações, RH, Financeiro)
+- `position_level`: Nível do cargo (Júnior, Pleno, Sênior, Coordenador, Gerente)
+- `team_size`: Tamanho da equipe (3-30)
+- `direct_reports`: Subordinados diretos (0-15)
+
+#### Condições de Trabalho
+- `commute_time_min`: Tempo de deslocamento em minutos (10-120)
+- `work_mode`: Modo de trabalho (Presencial, Remoto, Híbrido)
+- `workspace_quality`: Qualidade do espaço (Ruim, Adequado, Bom, Excelente)
+- `noise_level`: Nível de ruído (Baixo, Moderado, Alto)
+
+#### Ferramentas e Recursos
+- `has_modern_equipment`: Equipamentos modernos (Sim/Não)
+- `software_training_hours`: Horas de treinamento (0-100)
+- `tools_satisfaction`: Satisfação com ferramentas (1-10)
+
+#### Saúde e Bem-estar
+- `sleep_hours_avg`: Horas médias de sono (4-10)
+- `exercise_days_week`: Dias de exercício por semana (0-7)
+- `stress_level`: Nível de estresse (Baixo, Moderado, Alto, Muito Alto)
+- `sick_days_last_year`: Dias de doença no último ano (0-20)
+
+#### Motivação e Engajamento
+- `salary_satisfaction`: Satisfação salarial (1-10)
+- `manager_quality`: Qualidade do gerente (1-10)
+- `career_growth_score`: Pontuação de crescimento de carreira (1-10)
+- `work_life_balance`: Equilíbrio trabalho-vida (1-10)
+
+#### Suporte e Benefícios
+- `has_flexible_hours`: Horário flexível (Sim/Não)
+- `has_health_insurance`: Plano de saúde (Sim/Não)
+- `has_meal_voucher`: Vale refeição (Sim/Não)
+- `professional_development_budget`: Orçamento de desenvolvimento (R$ 0-10.000)
+
+### 💡 Aplicação Prática
+Identificar fatores que afetam produtividade, melhorar condições de trabalho, reduzir turnover.
+
+---
+
 ## ⚠️ Problemas Comuns nos Datasets
 
 Todos os datasets contêm os seguintes problemas **intencionais**:
@@ -267,21 +547,25 @@ Todos os datasets contêm os seguintes problemas **intencionais**:
 
 ## 📊 Comparação dos Datasets
 
-| Aspecto | Estudantes | E-commerce | Energia | Imóveis | Entrega |
-|---------|-----------|------------|---------|---------|---------|
-| **Dificuldade** | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
-| **Variáveis Categóricas** | 6 | 5 | 8 | 8 | 9 |
-| **Variáveis Numéricas** | 7 | 11 | 8 | 9 | 7 |
-| **Correlações Óbvias** | Forte | Média | Forte | Forte | Média |
-| **Feature Engineering** | Médio | Alto | Médio | Alto | Alto |
-| **Interpretabilidade** | Alta | Média | Alta | Alta | Média |
+| # | Dataset | Dificuldade | Var. Categ. | Var. Num. | Correlações | Feature Eng. | Interpretab. |
+|:-:|---------|:-----------:|:-----------:|:---------:|:-----------:|:------------:|:------------:|
+| **1** | Estudantes | ⭐⭐ | 6 | 7 | Forte | Médio | Alta |
+| **2** | E-commerce | ⭐⭐⭐ | 5 | 11 | Média | Alto | Média |
+| **3** | Energia | ⭐⭐⭐ | 8 | 8 | Forte | Médio | Alta |
+| **4** | Imóveis | ⭐⭐⭐⭐ | 8 | 9 | Forte | Alto | Alta |
+| **5** | Entrega | ⭐⭐⭐ | 9 | 7 | Média | Alto | Média |
+| **6** | Salário TI | ⭐⭐⭐ | 7 | 10 | Forte | Médio | Alta |
+| **7** | YouTube | ⭐⭐⭐ | 8 | 13 | Média | Alto | Média |
+| **8** | Restaurante | ⭐⭐ | 11 | 13 | Média | Médio | Alta |
+| **9** | Carros Usados | ⭐⭐⭐ | 12 | 13 | Forte | Alto | Alta |
+| **10** | Produtividade | ⭐⭐ | 12 | 16 | Média | Médio | Alta |
 
 ---
 
 ## 🚀 Como Começar
 
 ### 1. Escolha seu Dataset
-Discuta com o grupo e escolha 1 dos 5 datasets disponíveis acima.
+Discuta com o grupo e escolha 1 dos 10 datasets disponíveis acima.
 
 ### 2. Leia as Instruções da Etapa 1
 **Arquivo:** `etapas/etapa1/README.md`

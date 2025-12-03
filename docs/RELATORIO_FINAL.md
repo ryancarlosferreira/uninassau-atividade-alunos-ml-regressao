@@ -468,15 +468,6 @@ projeto-ml-regressao/
 └── requirements.txt
 ```
 
-### 9.3 Contato
-
-Para dúvidas ou sugestões sobre este projeto:
-
-- Email: [seu_email@exemplo.com]
-- GitHub: [seu_usuario]
-
----
-
-**Data de Conclusão:** Dezembro 2024
+**Data de Conclusão:** Dezembro 2025
 
 **Declaração:** Este relatório representa o trabalho desenvolvido pelo grupo durante o projeto de Machine Learning - Regressão. Todos os códigos, análises e conclusões são originais e baseados no dataset fornecido.

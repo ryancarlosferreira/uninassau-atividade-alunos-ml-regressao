@@ -3,11 +3,11 @@
 **Grupo:** Equipe ML Regressão
 **Membros:**
 
-- Ryan Carlos Ferreira da Silva - 01706058
-- João Paulo Silva Bezerra - 01711984
-- José Erik de Lima Neves - 01696449
-- Kleberson Cordeiro De Oliveira - 01713327
-- Lucas Antônio barros da Silva - 01707811
+- Ryan Carlos
+- João Paulo
+- José Erik
+- Kleberson Cordeiro
+- Lucas Antônio
 
 **Dataset:** Student Performance (students_performance.csv)
 **Objetivo:** Prever a nota final de estudantes (0-100)

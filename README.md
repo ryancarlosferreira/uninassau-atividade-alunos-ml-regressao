@@ -5,11 +5,11 @@
 **Formato:** Trabalho em Grupo (até 5 pessoas)
 **Duração:** 5 semanas (1 etapa por semana)
 **Membros:**
-- Ryan Carlos Ferreira da Silva - 01706058
-- João Paulo Silva Bezerra - 01711984
-- José Erik de Lima Neves - 01696449
-- Kleberson Cordeiro De Oliveira - 01713327
-- Lucas Antônio barros da Silva - 01707811
+- Ryan Carlos
+- João Paulo
+- José Erik
+- Kleberson Cordeiro
+- Lucas Antônio
 
 ---
 
